@@ -1,60 +1,75 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class movingFolks : MonoBehaviour {
+public class movingFolks : MonoBehaviour
+{
 
-//	//float speed = 2f;
-//	float xSpeed;
-//	float ySpeed;
-//
-//	void Start () {
-//		xSpeed = Random.Range(1f,5f)*Time.deltaTime;
-//		ySpeed = Random.Range(1f,3f)*Time.deltaTime;
-//	
-//	}
-//	
-//	// Update is called once per frame
-//	void Update () {
-//
-////		xSpeed = Input.GetAxis("Horizontal") * speed;
-//
-//
-//		//GetComponentInChildren<Rigidbody>().AddForce( new Vector3(xSpeed, ySpeed, 0));
-//
-//		GetComponent<Rigidbody>().transform.position = new Vector3(xSpeed, ySpeed, 0);
-//	
-//	}
+	public float velMax;
+	public float xMax;
+	public float zMax;
+	public float xMin;
+	public float zMin;
+	private float x;
+	private float z;
+	private float timeGap;
+	private float direction;
 
-	float speed;
-	Vector3 folks;
-	Vector3 folksNow;
-
-	bool notOriginalPos = false;
-
-	void Setup(){
-
-		//folks = transform.position;
-		speed = Random.Range (10f,20f);
-
-	}
-
-	void Update(){
+	float angle;
+	
+	// Use this for initialization
+	void Start ()
+	{
 		
-//		transform.Translate (speed * Time.deltaTime,0, speed * Time.deltaTime, Space.World);
-//		speed = Random.insideUnitCircle * 5;
-
-		GetComponent<Rigidbody>().AddForce(new Vector3(speed,0,speed));
-
-		//folksNow = transform.position;
-		speedChanger();
+		x = Random.Range (-velMax, velMax);
+		z = Random.Range (-velMax, velMax);
+		direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+		transform.localRotation = Quaternion.Euler (0, direction, 0);
+	
 	}
+	
+	// Update is called once per frame
+	void Update ()
+	{
+		
+		timeGap *= Time.deltaTime;
+		
+		if (transform.localPosition.x > xMax) {
+			x = Random.Range (-velMax, 0.0f);
+			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+			transform.localRotation = Quaternion.Euler (0, direction, 0);
+			timeGap = 0.5f; 
+		}
 
-//	void speedChanger(){
-//		speed = Random.Range (10f,20f);
-//	}
+		if (transform.localPosition.x < xMin) {
+			x = Random.Range (0.0f, velMax);
+			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+			transform.localRotation = Quaternion.Euler (0, direction, 0); 
+			timeGap = 0.5f; 
+		}
 
-	IEnumerator speedChanger() {
-		yield return new WaitForSeconds(2f);
-		speed = Random.Range (10f,20f);
+		if (transform.localPosition.z > zMax) {
+			z = Random.Range (-velMax, 0.0f);
+			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+			transform.localRotation = Quaternion.Euler (0, direction, 0); 
+			timeGap = 0.5f; 
+		}
+
+		if (transform.localPosition.z < zMin) {
+			z = Random.Range (0.0f, velMax);
+			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+			transform.localRotation = Quaternion.Euler (0, direction, 0);
+			timeGap = 0.5f; 
+		}
+		
+
+		if (timeGap > 2.0f) {
+			x = Random.Range (-velMax, velMax);
+			z = Random.Range (-velMax, velMax);
+			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+			transform.localRotation = Quaternion.Euler (0, direction, 0);
+			timeGap = 0.5f;
+		}
+		
+		transform.localPosition = new Vector3 (transform.localPosition.x + x, transform.localPosition.y, transform.localPosition.z + z);
 	}
 }
