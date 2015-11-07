@@ -29,7 +29,7 @@ public class movingFolks : MonoBehaviour
 	void Update ()
 	{
 		
-		timeGap *= Time.deltaTime;
+		timeGap = Time.deltaTime;
 		
 		if (transform.localPosition.x > xMax) {
 			x = Random.Range (-velMax, 0.0f);
