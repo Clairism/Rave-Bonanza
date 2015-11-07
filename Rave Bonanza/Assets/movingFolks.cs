@@ -13,8 +13,6 @@ public class movingFolks : MonoBehaviour
 	private float z;
 	private float timeGap;
 	private float direction;
-
-	float angle;
 	
 	// Use this for initialization
 	void Start ()
@@ -37,28 +35,28 @@ public class movingFolks : MonoBehaviour
 			x = Random.Range (-velMax, 0.0f);
 			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0);
-			timeGap = 0.5f; 
+			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.x < xMin) {
 			x = Random.Range (0.0f, velMax);
 			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0); 
-			timeGap = 0.5f; 
+			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.z > zMax) {
 			z = Random.Range (-velMax, 0.0f);
 			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0); 
-			timeGap = 0.5f; 
+			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.z < zMin) {
 			z = Random.Range (0.0f, velMax);
 			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0);
-			timeGap = 0.5f; 
+			timeGap = 0.0f; 
 		}
 		
 
@@ -67,7 +65,7 @@ public class movingFolks : MonoBehaviour
 			z = Random.Range (-velMax, velMax);
 			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0);
-			timeGap = 0.5f;
+			timeGap = 0.0f;
 		}
 		
 		transform.localPosition = new Vector3 (transform.localPosition.x + x, transform.localPosition.y, transform.localPosition.z + z);
