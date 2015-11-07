@@ -33,28 +33,28 @@ public class movingFolks : MonoBehaviour
 		
 		if (transform.localPosition.x > xMax) {
 			x = Random.Range (-velMax, 0.0f);
-			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+//			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0);
 			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.x < xMin) {
 			x = Random.Range (0.0f, velMax);
-			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+//			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0); 
 			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.z > zMax) {
 			z = Random.Range (-velMax, 0.0f);
-			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+//			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0); 
 			timeGap = 0.0f; 
 		}
 
 		if (transform.localPosition.z < zMin) {
 			z = Random.Range (0.0f, velMax);
-			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
+//			direction = Mathf.Atan2 (x, z) * (180 / 3.141592f) + 20;
 			transform.localRotation = Quaternion.Euler (0, direction, 0);
 			timeGap = 0.0f; 
 		}
