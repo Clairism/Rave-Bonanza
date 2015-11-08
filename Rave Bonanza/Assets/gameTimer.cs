@@ -85,7 +85,7 @@ public class gameTimer : MonoBehaviour {
 		*/
 	}
 	
-	void FormatTimer () {
+	public void FormatTimer () {
 		if(milsec < 10) {
 			strMilSec = "0" + milsec.ToString();
 		} else {
@@ -146,6 +146,10 @@ public class gameTimer : MonoBehaviour {
 	public string Message {
 		get { return message; }
 		set { message = value; }
+	}
+
+	public float MilSec{
+		get {return milsec;}
 	}
 	//public float milSec
 	public float Sec {
