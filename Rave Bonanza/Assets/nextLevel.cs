@@ -60,10 +60,10 @@ public class nextLevel : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-
+		if(other.gameObject.tag == "Player"){
 		timerCount.GetComponent<gameTimer> ().stopTimer = true;
 		triggered = true;
-
+		}
 	}
 
 	void OnGUI ()
