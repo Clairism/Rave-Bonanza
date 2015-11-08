@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class coinspin: MonoBehaviour {
+public class coinshake: MonoBehaviour {
 
 	public float myRotationSpeed = 100f;
 
