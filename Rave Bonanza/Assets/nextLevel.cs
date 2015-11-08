@@ -72,7 +72,7 @@ public class nextLevel : MonoBehaviour
 		if (triggered) {
 
 			FormatTimer ();
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 20, 300, 30), "You used " + strMin + ":" + strSec + ":" + strMilSec + " to get here!! Press 'R' to replay the game!", scoreStyle);
+			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 20, 300, 30), "You used " + strMin + ":" + strSec + ":" + strMilSec + " to get here!!" + "\n" + "Press 'R' to replay the game!", scoreStyle);
 		
 		}
 	}
