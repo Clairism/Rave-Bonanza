@@ -4,7 +4,7 @@ using System.Collections;
 public class VomitManMoving : folksMoving {
 
 	public bool vomiting;
-	float speedChange;
+	private float speedChange;
 	
 
 	public override void Start () {
@@ -12,7 +12,7 @@ public class VomitManMoving : folksMoving {
 		speed = 8f;
 		vomiting = false;
 
-		speedChange = 10f;
+		speedChange = 20f;
 
 		//particle = GetComponentInChildren(ParticleEmitter);
 
@@ -25,7 +25,9 @@ public class VomitManMoving : folksMoving {
 			GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed -= speedChange;
 			//vomit effect
 
-			Invoke ("SpeedBack", 5f);
+			Invoke ("SpeedBack", 8f);
+
+			vomiting = false;
 		}
 	
 	}
