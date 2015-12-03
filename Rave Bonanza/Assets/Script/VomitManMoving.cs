@@ -18,7 +18,7 @@ public class VomitManMoving : folksMoving {
 
 	}
 
-	public void Update () {
+	public override void Update () {
 
 		if(vomiting == true){
 			//slow down speed
