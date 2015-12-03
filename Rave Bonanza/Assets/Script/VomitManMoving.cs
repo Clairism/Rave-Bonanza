@@ -14,8 +14,6 @@ public class VomitManMoving : folksMoving {
 
 		speedChange = 20f;
 
-		//particle = GetComponentInChildren(ParticleEmitter);
-
 	}
 
 	public override void Update () {
@@ -23,18 +21,16 @@ public class VomitManMoving : folksMoving {
 		if(vomiting == true){
 			//slow down speed
 			GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed -= speedChange;
-			//vomit effect
 
 			Invoke ("SpeedBack", 8f);
 
+			//vomit particle effect
 			vomiting = false;
 		}
 	
 	}
 	
-
-	//public void Play(bool withChildren = true);
-
+	
 	void SpeedBack(){
 
 		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;
