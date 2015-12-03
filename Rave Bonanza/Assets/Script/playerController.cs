@@ -28,11 +28,9 @@ public class playerController : MonoBehaviour
 		
 		transform.Translate (Vector3.forward * xSpeed);
 		transform.Translate (Vector3.left * ySpeed);
-
 		transform.Translate (Vector3.up * jumpPlayerSpeed);
 
 		Physics.gravity = new Vector3(0, playerGravity, 0);
-
 
 		transform.Rotate (0, (Input.GetAxis ("Mouse X") * rotateSpeed), 0, Space.World);
 
