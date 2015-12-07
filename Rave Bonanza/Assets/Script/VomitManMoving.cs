@@ -7,42 +7,42 @@ public class VomitManMoving : folksMoving {
 	private float speedChange;
 	
 
-	public override void Start () {
+	 void Start () {
 
-		speed = 8f;
+		speed = 5f;
+		Wander ();
+
 		vomiting = false;
 
 		speedChange = 20f;
 
-		Wander ();
 
 	}
 
-	public override void Update () {
+	void Update () {
 
 		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 		
-		if((transform.position - wayPoint).magnitude < 1)
+		if((transform.position - wayPoint).magnitude < 2)
 		{
-			// when the distance between us and the target is less than 3
-			// create a new way point target
+
 			Wander();
 			
 		}
 
-		if(vomiting == true){
+		if (vomiting == true) {
 			//slow down speed
-			GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed -= speedChange;
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
 			
 			Invoke ("SpeedBack", 8f);
 			
-			//vomit particle effect
+			//vomit particle effect??
 			vomiting = false;
 		}
 	
 	}
-	
-	
+
+
 	void SpeedBack(){
 
 		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;

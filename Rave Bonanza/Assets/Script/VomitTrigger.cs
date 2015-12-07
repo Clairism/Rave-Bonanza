@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VomitTrigger : VomitManMoving {
+public class VomitTrigger : MonoBehaviour {
 
-	
 	void OnTriggerEnter(Collider other){
 
 		if(other.tag == "Player"){
-			vomiting = true;
+			GetComponentInParent<VomitManMoving>().vomiting = true;
 
 			Debug.Log ("Hit.");
 
@@ -15,3 +14,5 @@ public class VomitTrigger : VomitManMoving {
 		
 	}
 }
+
+
