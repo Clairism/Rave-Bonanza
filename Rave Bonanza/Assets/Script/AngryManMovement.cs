@@ -23,7 +23,7 @@ public class AngryManMovement : folksMoving {
 		
 		transform.position += transform.TransformDirection (Vector3.forward) * speed * Time.deltaTime;
 		
-		if ((transform.position - wayPoint).magnitude < 2 && isHit == false) {
+		if ((transform.position - wayPoint).magnitude < 8 && isHit == false) {
 			
 			Wander ();
 			

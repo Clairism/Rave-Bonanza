@@ -23,7 +23,7 @@ public class VomitManMoving : folksMoving {
 
 		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 		
-		if((transform.position - wayPoint).magnitude < 2)
+		if((transform.position - wayPoint).magnitude <5)
 		{
 
 			Wander();
