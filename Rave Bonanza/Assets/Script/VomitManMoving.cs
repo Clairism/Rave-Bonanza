@@ -25,6 +25,7 @@ public class VomitManMoving : folksMoving {
 			Invoke ("SpeedBack", 8f);
 
 			//vomit particle effect
+
 			vomiting = false;
 		}
 	
