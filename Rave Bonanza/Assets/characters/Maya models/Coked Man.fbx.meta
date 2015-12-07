@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ff5870884785f6b4d94e9d285825fb07
-timeCreated: 1449468595
+guid: 3520a57a8e57ae446993dd5e297d2447
+timeCreated: 1449466660
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -67,21 +67,21 @@ ModelImporter:
     3300024: right_hand
     3300026: right_leg_1
     3300028: right_leg_2
-    4300000: left_leg_2
-    4300002: left_leg_1
-    4300004: left_foot
-    4300006: mouth
-    4300008: right_eye
-    4300010: left_eye
-    4300012: body
+    4300000: left_arm
+    4300002: left_hand
+    4300004: right_arm
+    4300006: right_hand
+    4300008: right_leg_1
+    4300010: right_leg_2
+    4300012: right_foot
     4300014: head
-    4300016: right_foot
-    4300018: right_leg_2
-    4300020: right_leg_1
-    4300022: right_hand
-    4300024: right_arm
-    4300026: left_hand
-    4300028: left_arm
+    4300016: body
+    4300018: left_eye
+    4300020: right_eye
+    4300022: mouth
+    4300024: left_foot
+    4300026: left_leg_1
+    4300028: left_leg_2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -106,7 +106,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
