@@ -6,15 +6,15 @@ public class folksMoving : MonoBehaviour {
 	public float speed;
 
 	public Vector3 wayPoint;
-	public float Range;
 	public float direction;
+
+	public float changeRange;
 
 	void Start () {
 
-		speed = 15f;
+		speed = 18f;
 
 		Wander();
-
 
 	}
 	
@@ -29,16 +29,26 @@ public class folksMoving : MonoBehaviour {
 				Wander();
 
 			}
-}
+
+	}
 		
 		public void Wander()
 		{ 			
-			//wayPoint =  new Vector3(Random.Range(transform.position.x - Range, transform.position.x + Range), 1, Random.Range(transform.position.z - Range, transform.position.z + Range));
-			wayPoint= transform.localPosition + Random.insideUnitSphere * 30;
-			wayPoint.y = 1;
+//		wayPoint =  new Vector3(Random.Range(transform.position.x - changeRange, transform.position.x + changeRange), 
+//		                        Random.Range(transform.position.z - changeRange, transform.position.z + changeRange), 0);
+			wayPoint = transform.position + Random.insideUnitSphere* 28;
+			wayPoint.y = 0;
 
 			transform.LookAt(wayPoint);
 			//Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
 		}
+
+	void OnCollisionEnter(Collision hit){
+
+		if (hit.gameObject.tag == "Floor") {
+			Wander ();
+		}
+
+	}
 	
 }
