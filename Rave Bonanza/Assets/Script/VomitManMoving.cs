@@ -6,33 +6,31 @@ public class VomitManMoving : folksMoving {
 	public bool vomiting;
 	private float speedChange;
 
-	//public ParticleSystem vomitParticles;
-	
+	public Transform hitPoint;
+		
+	float currentPlayerSpeed;
 
-	 void Start () {
+	public override void Start () {
 
-		speed = 5f;
-		//Wander ();
+		speed = 10f;
+		rotationRange = 200f;
+		timeGap = 2f;
+
 
 		vomiting = false;
-
 		speedChange = 20f;
-
 
 	}
 
-	void Update () {
+	public override void Update () {
 
-		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
-		
-		//if((transform.position - wayPoint).magnitude <5)
-		//{
+		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
-			//Wander();
-			
-		//}
+		Moving();
 
-		if (vomiting == true) {
+		currentPlayerSpeed = GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController>().playerSpeed;
+
+		if (vomiting == true && currentPlayerSpeed >= 0) {
 			//slow down speed
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
 			
@@ -40,19 +38,21 @@ public class VomitManMoving : folksMoving {
 			
 			//vomit particle effect
 
-			//vomitParticles.Play;
-
-			//Instantiate(vomitParticles, transform.position, transform.rotation);
-		
+			//transform.LookAt(hitPoint);
+			GetComponentInChildren<ParticleSystem>().Play();
+					
 			vomiting = false;
+
+			Debug.Log ("vomitting");
 		}
 	
 	}
 
 
+
 	void SpeedBack(){
 
-		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;
+		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed = 25f;
 
 	}
 }

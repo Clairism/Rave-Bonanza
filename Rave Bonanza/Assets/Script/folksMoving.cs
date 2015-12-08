@@ -1,60 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class folksMoving : MonoBehaviour {
+public class folksMoving : MonoBehaviour
+{
 
 	public float speed;
 	public float rotationSpeed;
+	public float rotationRange;
+	
+	public float timer;
 
-
-	//public Vector3 wayPoint;
-
-	//public float changeRange;
-
-	float timer;
-
+	public float timeGap;
+	
 	//Rigidbody rb;
 
 	//public Transform startPoint;
 
-	void Start () {
+	public virtual void Start ()
+	{
 
 		speed = 100f;
+		timeGap = 0.6f;
 
+		rotationRange = 300f;
 		//Wander();
 		//startPoint.position = transform.localPosition;
 		//rb = GetComponent<Rigidbody>();
 	}
 	
-	void Update () {
+	public virtual void Update ()
+	{
+		Moving();
+
+
+	}
+
+	
+	public void Moving ()
+	{
 		timer += Time.deltaTime;
+		
+		GetComponent<Rigidbody> ().AddForce (transform.forward * speed);
 
-		GetComponent<Rigidbody>().AddForce(transform.forward * speed);
-
-		/*
-			if((transform.position - wayPoint).magnitude < 15)
-			{
-				// when the distance between us and the target is less than 3
-				// create a new way point target
-				Wander();
-
-			}
-			*/
-
-		if(timer >= 0.6f){
-
-			changeDirection();
+		if (timer >= timeGap) {
+			
+			changeDirection ();
 			timer = 0;
-
+			
 		}
 
 	}
 		
-		public void changeDirection()
-		{ 			
+	public void changeDirection ()
+	{ 			
 
-		rotationSpeed = Random.Range (-300f, 300f);
-		GetComponent<Rigidbody>().AddTorque(transform.up * rotationSpeed);
+		rotationSpeed = Random.Range (-rotationRange, rotationRange);
+		GetComponent<Rigidbody> ().AddTorque (transform.up * rotationSpeed);
 
 
 		/*
@@ -65,12 +66,14 @@ public class folksMoving : MonoBehaviour {
 			Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
 			*/
 
-		}
+	}
 
-	void OnCollisionEnter(Collision hit){
+
+	public void OnCollisionEnter (Collision hit)
+	{
 
 		if (hit.gameObject.tag == "Floor") {
-			changeDirection();		
+			changeDirection ();		
 		}
 
 	}
