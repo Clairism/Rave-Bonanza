@@ -25,12 +25,12 @@ public class VomitManMoving : folksMoving {
 
 		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 		
-		if((transform.position - wayPoint).magnitude <5)
-		{
+		//if((transform.position - wayPoint).magnitude <5)
+		//{
 
 			//Wander();
 			
-		}
+		//}
 
 		if (vomiting == true) {
 			//slow down speed

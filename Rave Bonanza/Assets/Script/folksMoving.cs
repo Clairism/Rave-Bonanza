@@ -7,9 +7,9 @@ public class folksMoving : MonoBehaviour {
 	public float rotationSpeed;
 
 
-	public Vector3 wayPoint;
+	//public Vector3 wayPoint;
 
-	public float changeRange;
+	//public float changeRange;
 
 	float timer;
 
