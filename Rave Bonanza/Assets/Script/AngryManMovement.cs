@@ -11,7 +11,7 @@ public class AngryManMovement : folksMoving {
 	void Start () {
 		
 		speed = 8f;
-		Wander ();
+		//Wander ();
 
 		isHit = false;
 		isAngry = true;
@@ -25,7 +25,7 @@ public class AngryManMovement : folksMoving {
 		
 		if ((transform.position - wayPoint).magnitude < 8 && isHit == false) {
 			
-			Wander ();
+			//Wander ();
 			
 		}
 

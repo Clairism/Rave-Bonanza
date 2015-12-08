@@ -5,12 +5,14 @@ public class VomitManMoving : folksMoving {
 
 	public bool vomiting;
 	private float speedChange;
+
+	//public ParticleSystem vomitParticles;
 	
 
 	 void Start () {
 
 		speed = 5f;
-		Wander ();
+		//Wander ();
 
 		vomiting = false;
 
@@ -26,7 +28,7 @@ public class VomitManMoving : folksMoving {
 		if((transform.position - wayPoint).magnitude <5)
 		{
 
-			Wander();
+			//Wander();
 			
 		}
 
@@ -36,7 +38,12 @@ public class VomitManMoving : folksMoving {
 			
 			Invoke ("SpeedBack", 8f);
 			
-			//vomit particle effect??
+			//vomit particle effect
+
+			//vomitParticles.Play;
+
+			//Instantiate(vomitParticles, transform.position, transform.rotation);
+		
 			vomiting = false;
 		}
 	
