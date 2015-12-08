@@ -4,27 +4,34 @@ using System.Collections;
 public class folksMoving : MonoBehaviour {
 
 	public float speed;
+	public float rotationSpeed;
+
 
 	public Vector3 wayPoint;
-	public float direction;
 
 	public float changeRange;
+
+	float timer;
+
+	//Rigidbody rb;
 
 	//public Transform startPoint;
 
 	void Start () {
 
-		speed = 18f;
+		speed = 100f;
 
-		Wander();
+		//Wander();
 		//startPoint.position = transform.localPosition;
-
+		//rb = GetComponent<Rigidbody>();
 	}
 	
 	void Update () {
+		timer += Time.deltaTime;
 
-		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
+		GetComponent<Rigidbody>().AddForce(transform.forward * speed);
 
+		/*
 			if((transform.position - wayPoint).magnitude < 15)
 			{
 				// when the distance between us and the target is less than 3
@@ -32,24 +39,38 @@ public class folksMoving : MonoBehaviour {
 				Wander();
 
 			}
+			*/
+
+		if(timer >= 0.6f){
+
+			changeDirection();
+			timer = 0;
+
+		}
 
 	}
 		
-		public void Wander()
+		public void changeDirection()
 		{ 			
-//		wayPoint =  new Vector3(Random.Range(transform.position.x - changeRange, transform.position.x + changeRange), 
-//		                        Random.Range(transform.position.z - changeRange, transform.position.z + changeRange), 0);
+
+		rotationSpeed = Random.Range (-300f, 300f);
+		GetComponent<Rigidbody>().AddTorque(transform.up * rotationSpeed);
+
+
+		/*
 		wayPoint = transform.position + Random.insideUnitSphere* 28;
 			wayPoint.y = 0;
 
 			transform.LookAt(wayPoint);
-			//Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
+			Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
+			*/
+
 		}
 
 	void OnCollisionEnter(Collision hit){
 
 		if (hit.gameObject.tag == "Floor") {
-			Wander ();
+			changeDirection();		
 		}
 
 	}
