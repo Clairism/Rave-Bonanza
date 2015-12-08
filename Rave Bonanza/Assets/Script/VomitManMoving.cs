@@ -5,32 +5,51 @@ public class VomitManMoving : folksMoving {
 
 	public bool vomiting;
 	private float speedChange;
+
+	//public ParticleSystem vomitParticles;
 	
 
-	public override void Start () {
+	 void Start () {
 
-		speed = 8f;
+		speed = 5f;
+		//Wander ();
+
 		vomiting = false;
 
 		speedChange = 20f;
 
+
 	}
 
-	public override void Update () {
+	void Update () {
 
-		if(vomiting == true){
+		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
+		
+		//if((transform.position - wayPoint).magnitude <5)
+		//{
+
+			//Wander();
+			
+		//}
+
+		if (vomiting == true) {
 			//slow down speed
-			GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed -= speedChange;
-
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
+			
 			Invoke ("SpeedBack", 8f);
-
+			
 			//vomit particle effect
+
+			//vomitParticles.Play;
+
+			//Instantiate(vomitParticles, transform.position, transform.rotation);
+		
 			vomiting = false;
 		}
 	
 	}
-	
-	
+
+
 	void SpeedBack(){
 
 		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;
