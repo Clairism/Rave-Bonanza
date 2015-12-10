@@ -17,7 +17,8 @@ public class jumpingFolks : MonoBehaviour {
 
 	if(!falling){
 		//transform.position += Vector3.up * jumpSpeed * gravity * Time.deltaTime;
-			GetComponent<Rigidbody>().AddForce (transform.up * jumpSpeed * gravity * Time.deltaTime);
+			GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0);
+
 			if(transform.position.y >=jumpHeight){
 				Fall();
 			}
@@ -25,7 +26,7 @@ public class jumpingFolks : MonoBehaviour {
 
 		if(falling){
 		//transform.position += Vector3.down * jumpSpeed * gravity * Time.deltaTime;
-			GetComponent<Rigidbody>().AddForce (transform.up * (-jumpSpeed) * gravity * Time.deltaTime);
+			GetComponent<Rigidbody>().velocity = new Vector3(0, -10, 0);
 
 		}
 
@@ -36,7 +37,7 @@ public class jumpingFolks : MonoBehaviour {
 
 		if(hitObj.gameObject.tag == "Floor")
 		{
-			Invoke("Jump", 0.0f);
+			Invoke("Jump", Random.Range(0.5f, 1.5f));
 		}
 	
 	}
