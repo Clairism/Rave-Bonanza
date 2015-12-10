@@ -31,8 +31,7 @@ public class folksMoving : MonoBehaviour
 	public virtual void Update ()
 	{
 		Moving();
-
-
+	
 	}
 
 	
