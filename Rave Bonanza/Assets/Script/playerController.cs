@@ -29,7 +29,11 @@ public class playerController : MonoBehaviour
 		
 		transform.Translate (Vector3.forward * xSpeed);
 		transform.Translate (Vector3.left * ySpeed);
+
+		//jump limit
+		if(transform.position.y <= 20){
 		transform.Translate (Vector3.up * jumpPlayerSpeed);
+		}
 
 		Physics.gravity = new Vector3(0, playerGravity, 0);
 
