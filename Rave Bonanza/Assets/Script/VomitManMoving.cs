@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VomitManMoving : folksMoving {
+public class VomitManMoving : folksMoving
+{
 
 	public bool vomiting;
 	private float speedChange;
-
-	public Transform hitPoint;
-		
+	public bool hit;
 	float currentPlayerSpeed;
+	GameObject player;
 
-	public override void Start () {
+	public override void Start ()
+	{
 
 		speed = 10f;
 		rotationRange = 200f;
@@ -18,28 +19,38 @@ public class VomitManMoving : folksMoving {
 
 
 		vomiting = false;
+		hit = false;
 		speedChange = 20f;
+
+		player = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 
-	public override void Update () {
+	public override void Update ()
+	{
 
 		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
-		Moving();
+		Moving ();
 
-		currentPlayerSpeed = GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController>().playerSpeed;
+		currentPlayerSpeed = player.GetComponent<playerController> ().playerSpeed;
 
 		if (vomiting == true && currentPlayerSpeed >= 0) {
 			//slow down speed
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
+			player.GetComponent<playerController> ().playerSpeed = 5f;
 			
 			Invoke ("SpeedBack", 8f);
 			
 			//vomit particle effect
 
-			//transform.LookAt(hitPoint);
-			GetComponentInChildren<ParticleSystem>().Play();
+			if (hit) {
+
+				transform.LookAt (player.transform.position);
+
+				hit = false;
+				}
+
+			GetComponentInChildren<ParticleSystem> ().Play ();
 					
 			vomiting = false;
 
@@ -48,11 +59,10 @@ public class VomitManMoving : folksMoving {
 	
 	}
 
+	void SpeedBack ()
+	{
 
-
-	void SpeedBack(){
-
-		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed = 25f;
+		player.GetComponent<playerController> ().playerSpeed = 25f;
 
 	}
 }

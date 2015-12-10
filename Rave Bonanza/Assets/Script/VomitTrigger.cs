@@ -8,8 +8,7 @@ public class VomitTrigger : MonoBehaviour {
 
 		if(other.tag == "Player"){
 			GetComponentInParent<VomitManMoving>().vomiting = true;
-
-			//hitPoint = GetComponentInParent<Transform>();
+			GetComponentInParent<VomitManMoving>().hit = true;
 
 			Debug.Log ("Hit.");
 
