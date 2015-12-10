@@ -8,10 +8,12 @@ public class AngryManMovement : folksMoving {
 	bool isHit;
 	bool isAngry;
 
-	void Start () {
+	public override void Start () {
 		
-		speed = 8f;
-		Wander ();
+		speed = 80f;
+		rotationRange = 400f;
+		timeGap = 0.3f;
+
 
 		isHit = false;
 		isAngry = true;
@@ -19,15 +21,10 @@ public class AngryManMovement : folksMoving {
 
 	}
 	
-	void Update () {
+	public override void Update () {
 		
-		transform.position += transform.TransformDirection (Vector3.forward) * speed * Time.deltaTime;
-		
-		if ((transform.position - wayPoint).magnitude < 8 && isHit == false) {
-			
-			Wander ();
-			
-		}
+		Moving();
+
 
 		playerPosition = GameObject.Find ("Player").transform;
 

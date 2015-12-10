@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour
 	
 	void Update ()
 	{
+
 		xSpeed = Input.GetAxis ("Horizontal") * playerSpeed * Time.deltaTime;
 		ySpeed = Input.GetAxis ("Vertical") * playerSpeed * Time.deltaTime;
 
@@ -33,7 +34,6 @@ public class playerController : MonoBehaviour
 		Physics.gravity = new Vector3(0, playerGravity, 0);
 
 		transform.Rotate (0, (Input.GetAxis ("Mouse X") * rotateSpeed), 0, Space.World);
-
 
 	}
 

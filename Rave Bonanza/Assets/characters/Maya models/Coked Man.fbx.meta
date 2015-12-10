@@ -1,87 +1,16 @@
 fileFormatVersion: 2
-guid: 3520a57a8e57ae446993dd5e297d2447
-timeCreated: 1449466660
+guid: 72f4a42c68905704c83880110499c020
+timeCreated: 1449547952
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: body
-    100002: //RootNode
-    100004: head
-    100006: left_arm
-    100008: left_eye
-    100010: left_foot
-    100012: left_hand
-    100014: left_leg_1
-    100016: left_leg_2
-    100018: mouth
-    100020: right_arm
-    100022: right_eye
-    100024: right_foot
-    100026: right_hand
-    100028: right_leg_1
-    100030: right_leg_2
-    400000: body
-    400002: //RootNode
-    400004: head
-    400006: left_arm
-    400008: left_eye
-    400010: left_foot
-    400012: left_hand
-    400014: left_leg_1
-    400016: left_leg_2
-    400018: mouth
-    400020: right_arm
-    400022: right_eye
-    400024: right_foot
-    400026: right_hand
-    400028: right_leg_1
-    400030: right_leg_2
-    2300000: body
-    2300002: head
-    2300004: left_arm
-    2300006: left_eye
-    2300008: left_foot
-    2300010: left_hand
-    2300012: left_leg_1
-    2300014: left_leg_2
-    2300016: mouth
-    2300018: right_arm
-    2300020: right_eye
-    2300022: right_foot
-    2300024: right_hand
-    2300026: right_leg_1
-    2300028: right_leg_2
-    3300000: body
-    3300002: head
-    3300004: left_arm
-    3300006: left_eye
-    3300008: left_foot
-    3300010: left_hand
-    3300012: left_leg_1
-    3300014: left_leg_2
-    3300016: mouth
-    3300018: right_arm
-    3300020: right_eye
-    3300022: right_foot
-    3300024: right_hand
-    3300026: right_leg_1
-    3300028: right_leg_2
-    4300000: left_arm
-    4300002: left_hand
-    4300004: right_arm
-    4300006: right_hand
-    4300008: right_leg_1
-    4300010: right_leg_2
-    4300012: right_foot
-    4300014: head
-    4300016: body
-    4300018: left_eye
-    4300020: right_eye
-    4300022: mouth
-    4300024: left_foot
-    4300026: left_leg_1
-    4300028: left_leg_2
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cocked_Man
+    6400000: //RootNode
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -108,7 +37,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 100
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

@@ -1,55 +1,78 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class folksMoving : MonoBehaviour {
+public class folksMoving : MonoBehaviour
+{
 
 	public float speed;
+	public float rotationSpeed;
+	public float rotationRange;
+	
+	public float timer;
 
-	public Vector3 wayPoint;
-	public float direction;
-
-	public float changeRange;
+	public float timeGap;
+	
+	//Rigidbody rb;
 
 	//public Transform startPoint;
 
-	void Start () {
+	public virtual void Start ()
+	{
 
-		speed = 10f;
+		speed = 100f;
+		timeGap = 0.6f;
 
-		Wander();
+		rotationRange = 300f;
+		//Wander();
 		//startPoint.position = transform.localPosition;
-
+		//rb = GetComponent<Rigidbody>();
 	}
 	
-	void Update () {
+	public virtual void Update ()
+	{
+		Moving();
+	
+	}
 
-		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
+	
+	public void Moving ()
+	{
+		timer += Time.deltaTime;
+		
+		GetComponent<Rigidbody> ().AddForce (transform.forward * speed);
 
-			if((transform.position - wayPoint).magnitude < 5)
-			{
-				// when the distance between us and the target is less than 3
-				// create a new way point target
-				Wander();
-
-			}
+		if (timer >= timeGap) {
+			
+			changeDirection ();
+			timer = 0;
+			
+		}
 
 	}
 		
-		public void Wander()
-		{ 			
-//		wayPoint =  new Vector3(Random.Range(transform.position.x - changeRange, transform.position.x + changeRange), 
-//		                        Random.Range(transform.position.z - changeRange, transform.position.z + changeRange), 0);
+	public void changeDirection ()
+	{ 			
+
+		rotationSpeed = Random.Range (-rotationRange, rotationRange);
+		GetComponent<Rigidbody> ().AddTorque (transform.up * rotationSpeed);
+
+
+		/*
 		wayPoint = transform.position + Random.insideUnitSphere* 28;
 			wayPoint.y = 0;
 
 			transform.LookAt(wayPoint);
-			//Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
-		}
+			Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
+			*/
 
-	void OnCollisionEnter(Collision hit){
+	}
+
+
+	public void OnCollisionEnter (Collision hit)
+	{
 
 		if (hit.gameObject.tag == "Floor") {
-			Wander ();
+			changeDirection ();		
 		}
 
 	}

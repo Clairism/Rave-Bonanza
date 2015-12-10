@@ -5,42 +5,49 @@ public class VomitManMoving : folksMoving {
 
 	public bool vomiting;
 	private float speedChange;
-	
 
-	 void Start () {
+	public Transform hitPoint;
+		
+	float currentPlayerSpeed;
 
-		speed = 5f;
-		Wander ();
+	public override void Start () {
+
+		speed = 10f;
+		rotationRange = 200f;
+		timeGap = 2f;
+
 
 		vomiting = false;
-
 		speedChange = 20f;
-
 
 	}
 
-	void Update () {
+	public override void Update () {
 
-		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
-		
-		if((transform.position - wayPoint).magnitude <5)
-		{
+		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
-			Wander();
-			
-		}
+		Moving();
 
-		if (vomiting == true) {
+		currentPlayerSpeed = GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController>().playerSpeed;
+
+		if (vomiting == true && currentPlayerSpeed >= 0) {
 			//slow down speed
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
 			
 			Invoke ("SpeedBack", 8f);
 			
-			//vomit particle effect??
+			//vomit particle effect
+
+			//transform.LookAt(hitPoint);
+			GetComponentInChildren<ParticleSystem>().Play();
+					
 			vomiting = false;
+
+			Debug.Log ("vomitting");
 		}
 	
 	}
+
 
 
 	void SpeedBack(){
