@@ -32,7 +32,7 @@ public class VomitManMoving : folksMoving {
 
 		if (vomiting == true && currentPlayerSpeed >= 0) {
 			//slow down speed
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed = 5f;
 			
 			Invoke ("SpeedBack", 8f);
 			

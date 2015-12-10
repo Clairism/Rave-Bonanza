@@ -17,6 +17,7 @@ public class jumpingFolks : MonoBehaviour {
 
 	if(!falling){
 		transform.position += Vector3.up * jumpSpeed * gravity * Time.deltaTime;
+			//GetComponent<Rigidbody>().AddForce(transform.up * jumpSpeed * gravity * Time.deltaTime);
 			if(transform.position.y >=jumpHeight){
 				Fall();
 			}
@@ -24,6 +25,8 @@ public class jumpingFolks : MonoBehaviour {
 
 		if(falling){
 		transform.position += Vector3.down * jumpSpeed * gravity * Time.deltaTime;
+			//GetComponent<Rigidbody>().AddForce(new Vector3.dow * jumpSpeed * gravity * Time.deltaTime);
+
 		}
 
 
