@@ -14,7 +14,7 @@ public class folksMoving : MonoBehaviour {
 
 	void Start () {
 
-		speed = 18f;
+		speed = 10f;
 
 		Wander();
 		//startPoint.position = transform.localPosition;
@@ -25,7 +25,7 @@ public class folksMoving : MonoBehaviour {
 
 		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
-			if((transform.position - wayPoint).magnitude < 15)
+			if((transform.position - wayPoint).magnitude < 5)
 			{
 				// when the distance between us and the target is less than 3
 				// create a new way point target

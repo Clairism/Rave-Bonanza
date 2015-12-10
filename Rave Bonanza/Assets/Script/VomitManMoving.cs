@@ -45,7 +45,7 @@ public class VomitManMoving : folksMoving {
 
 	void SpeedBack(){
 
-		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;
+		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed = 25f;
 
 	}
 }
