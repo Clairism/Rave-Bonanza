@@ -5,14 +5,10 @@ public class jumpingFolks : MonoBehaviour {
 
 	public float jumpSpeed;
 	public float jumpHeight;
-	float gravity = 0.98f;
+	//float gravity = 0.98f;
 	bool falling = false;
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
 	if(!falling){

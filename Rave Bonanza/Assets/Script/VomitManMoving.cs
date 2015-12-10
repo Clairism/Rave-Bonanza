@@ -5,10 +5,12 @@ public class VomitManMoving : folksMoving
 {
 
 	public bool vomiting;
-	private float speedChange;
 	public bool hit;
 	float currentPlayerSpeed;
 	GameObject player;
+
+	public float vomitTimer;
+	public float vomitTiming;
 
 	public override void Start ()
 	{
@@ -20,7 +22,6 @@ public class VomitManMoving : folksMoving
 
 		vomiting = false;
 		hit = false;
-		speedChange = 20f;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -28,7 +29,6 @@ public class VomitManMoving : folksMoving
 
 	public override void Update ()
 	{
-
 		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
 		Moving ();
@@ -41,14 +41,18 @@ public class VomitManMoving : folksMoving
 			
 			Invoke ("SpeedBack", 8f);
 			
-			//vomit particle effect
+			//timer to LookAt
 
 			if (hit) {
 
 				transform.LookAt (player.transform.position);
 
+				vomitTimer += Time.deltaTime;
+
 				hit = false;
 				}
+
+			//vomit particle effect
 
 			GetComponentInChildren<ParticleSystem> ().Play ();
 					
