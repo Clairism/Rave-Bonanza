@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour
 	
 	void Update ()
 	{
+
 		xSpeed = Input.GetAxis ("Horizontal") * playerSpeed * Time.deltaTime;
 		ySpeed = Input.GetAxis ("Vertical") * playerSpeed * Time.deltaTime;
 
@@ -28,12 +29,15 @@ public class playerController : MonoBehaviour
 		
 		transform.Translate (Vector3.forward * xSpeed);
 		transform.Translate (Vector3.left * ySpeed);
+
+		//jump limit
+		if(transform.position.y <= 20){
 		transform.Translate (Vector3.up * jumpPlayerSpeed);
+		}
 
 		Physics.gravity = new Vector3(0, playerGravity, 0);
 
 		transform.Rotate (0, (Input.GetAxis ("Mouse X") * rotateSpeed), 0, Space.World);
-
 
 	}
 

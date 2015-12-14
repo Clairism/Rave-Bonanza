@@ -1,58 +1,72 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VomitManMoving : folksMoving {
+public class VomitManMoving : folksMoving
+{
 
 	public bool vomiting;
-	private float speedChange;
+	public bool hit;
+	float currentPlayerSpeed;
+	GameObject player;
 
-	//public ParticleSystem vomitParticles;
-	
+	public float vomitTimer;
+	public float vomitTiming;
 
-	 void Start () {
+	public override void Start ()
+	{
 
-		speed = 5f;
-		//Wander ();
+		speed = 10f;
+		rotationRange = 200f;
+		timeGap = 2f;
+
 
 		vomiting = false;
+		hit = false;
 
-		speedChange = 20f;
-
+		player = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 
-	void Update () {
+	public override void Update ()
+	{
+		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
-		transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
-		
-		//if((transform.position - wayPoint).magnitude <5)
-		//{
+		Moving ();
 
-			//Wander();
-			
-		//}
+		currentPlayerSpeed = player.GetComponent<playerController> ().playerSpeed;
 
-		if (vomiting == true) {
+		if (vomiting == true && currentPlayerSpeed >= 0) {
 			//slow down speed
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<playerController> ().playerSpeed -= speedChange;
+			player.GetComponent<playerController> ().playerSpeed = 5f;
 			
 			Invoke ("SpeedBack", 8f);
 			
+			//timer to LookAt
+
+			if (hit) {
+
+				transform.LookAt (player.transform.position);
+
+				vomitTimer += Time.deltaTime;
+
+				hit = false;
+				}
+
 			//vomit particle effect
 
-			//vomitParticles.Play;
-
-			//Instantiate(vomitParticles, transform.position, transform.rotation);
-		
+			GetComponentInChildren<ParticleSystem> ().Play ();
+					
 			vomiting = false;
+
+			Debug.Log ("vomitting");
 		}
 	
 	}
 
+	void SpeedBack ()
+	{
 
-	void SpeedBack(){
-
-		GameObject.FindGameObjectWithTag("Player").GetComponent<playerController>().playerSpeed += speedChange;
+		player.GetComponent<playerController> ().playerSpeed = 25f;
 
 	}
 }
