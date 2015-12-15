@@ -17,7 +17,7 @@ public class AngryManMovement : folksMoving {
 
 		isHit = false;
 		isAngry = true;
-		chaseSpeed = 18f;
+		chaseSpeed = 8f;
 
 	}
 	
@@ -35,7 +35,7 @@ public class AngryManMovement : folksMoving {
 
 			isAngry = false;
 
-			Invoke ("StopChasing", 8f);
+			Invoke ("StopChasing", 18f);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class AngryManMovement : folksMoving {
 
 		isHit = false;
 
-		Invoke ("CanChaseAgain", 3f);
+		Invoke ("CanChaseAgain", 1f);
 
 	}
 
