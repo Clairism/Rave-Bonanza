@@ -23,9 +23,7 @@ public class folksMoving : MonoBehaviour
 		timeGap = 0.6f;
 
 		rotationRange = 300f;
-		//Wander();
-		//startPoint.position = transform.localPosition;
-		//rb = GetComponent<Rigidbody>();
+
 	}
 	
 	public virtual void Update ()
@@ -55,15 +53,6 @@ public class folksMoving : MonoBehaviour
 
 		rotationSpeed = Random.Range (-rotationRange, rotationRange);
 		GetComponent<Rigidbody> ().AddTorque (transform.up * rotationSpeed);
-
-
-		/*
-		wayPoint = transform.position + Random.insideUnitSphere* 28;
-			wayPoint.y = 0;
-
-			transform.LookAt(wayPoint);
-			Debug.Log(wayPoint + " and " + (transform.position - wayPoint).magnitude);
-			*/
 
 	}
 

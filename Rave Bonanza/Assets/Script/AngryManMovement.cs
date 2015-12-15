@@ -1,36 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AngryManMovement : folksMoving {
+public class AngryManMovement : folksMoving
+{
 
-	Transform playerPosition;
+	GameObject player;
 	private float chaseSpeed;
+	private float normalSpeed;
 	bool isHit;
 	bool isAngry;
 
-	public override void Start () {
+	public override void Start ()
+	{
 		
-		speed = 80f;
+		speed = 60f;
+		normalSpeed = 60f;
 		rotationRange = 400f;
 		timeGap = 0.3f;
 
 
 		isHit = false;
 		isAngry = true;
-		chaseSpeed = 18f;
+		chaseSpeed = 80f;
+
+		player = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 	
-	public override void Update () {
+	public override void Update ()
+	{
 		
-		Moving();
+		Moving ();
 
 
-		playerPosition = GameObject.Find ("Player").transform;
 
 		if (isHit) {
 
-			transform.LookAt (playerPosition);
+			transform.LookAt (player.transform);
 			transform.Translate (chaseSpeed * Vector3.forward * Time.deltaTime);
 
 			isAngry = false;
@@ -39,26 +45,34 @@ public class AngryManMovement : folksMoving {
 		}
 	}
 
-	void OnTriggerEnter(Collider other){
+	void OnTriggerEnter (Collider other)
+	{
 
-		if(other.tag == "Player" && isAngry){
+		if (other.tag == "Player" && isAngry) {
 			isHit = true;
-			
+
+			//player.GetComponent<Rigidbody>().AddForce(transform.forward * -8f);
+			transform.LookAt (player.transform);
+			player.transform.Translate (Vector3.forward * -30f);
+
 			Debug.Log ("Hit.");
 			
 		}
 
 	}
 
-	void StopChasing(){
+	void StopChasing ()
+	{
 
 		isHit = false;
+		speed = normalSpeed;
 
 		Invoke ("CanChaseAgain", 3f);
 
 	}
 
-	void CanChaseAgain(){
+	void CanChaseAgain ()
+	{
 
 		isAngry = true;
 

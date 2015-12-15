@@ -3,25 +3,32 @@ using System.Collections;
 
 public class cameraLerping : MonoBehaviour {
 
-	//GameObject playerCameraPoint;
+	GameObject player;
 
 	public Transform startPoint;
 	public Transform endPoint;
 
-	float speed = 1f;
+	//private float rotateSpeed = 3f;
 
-	// Use this for initialization
+	float speed;
+
 	void Start () {
+
+		speed = 10f;
+		player = GameObject.FindGameObjectWithTag("Player");
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		transform.LookAt (player.transform.position);
+
+
 		startPoint = GameObject.Find ("startPoint").transform;
 
 		endPoint = GameObject.Find ("endPoint").transform;
 
-		transform.position = Vector3.Lerp (startPoint.position, endPoint.position, speed);
+		transform.position = Vector3.Lerp (startPoint.position, endPoint.position, speed*Time.deltaTime);
 	}
 }
