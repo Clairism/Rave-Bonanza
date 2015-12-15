@@ -39,7 +39,7 @@ public class VomitManMoving : folksMoving
 			//slow down speed
 			player.GetComponent<playerController> ().playerSpeed = 5f;
 			
-			Invoke ("SpeedBack", 8f);
+			Invoke ("SpeedBack", 3f);
 			
 			//timer to LookAt
 
