@@ -8,7 +8,6 @@ public class VomitManMoving : folksMoving
 	public bool hit;
 	float currentPlayerSpeed;
 	GameObject player;
-
 	public float vomitTimer;
 	public float vomitTiming;
 
@@ -16,9 +15,8 @@ public class VomitManMoving : folksMoving
 	{
 
 		speed = 10f;
-		rotationRange = 200f;
-		timeGap = 2f;
-
+		rotationRange = 100f;
+		timeGap = 3f;
 
 		vomiting = false;
 		hit = false;
@@ -29,13 +27,13 @@ public class VomitManMoving : folksMoving
 
 	public override void Update ()
 	{
-		//transform.position += transform.TransformDirection(Vector3.forward) * speed *Time.deltaTime;
 
 		Moving ();
 
 		currentPlayerSpeed = player.GetComponent<playerController> ().playerSpeed;
 
 		if (vomiting == true && currentPlayerSpeed >= 0) {
+
 			//slow down speed
 			player.GetComponent<playerController> ().playerSpeed = 5f;
 			
@@ -50,7 +48,7 @@ public class VomitManMoving : folksMoving
 				vomitTimer += Time.deltaTime;
 
 				hit = false;
-				}
+			}
 
 			//vomit particle effect
 
