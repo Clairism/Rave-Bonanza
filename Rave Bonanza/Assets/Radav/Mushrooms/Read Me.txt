@@ -1,0 +1,25 @@
+Simple Mushrooms by Widdershins Studio
+
+Version 1.0
+
+There are 14 variations of texture for different looks.
+
+In the 'Single' folder are 14 individual mushrooms.
+
+In the 'Groups' folder are 14 small groups of three mushrooms.
+
+Just drag them into your scene and locate them.
+
+Textures are in PSD format and split into layers to make it easy to make your own textures.
+
+Also included is the UV map in the 'Textures' folder.
+
+There are three Levels of Detail (LOD) built into each single mushroom and group.
+
+LODs have been set up to be economical :
+
+LOD 0 (100%) : 300 polygons
+LOD 1 (25%) : 149 polygons
+LOD 2 (10%) : 49 polygons
+Culled at 2%
+
