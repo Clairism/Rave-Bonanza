@@ -15,7 +15,7 @@ public class playerController : MonoBehaviour
 	void Start ()
 	{
 		
-		playerSpeed = 25f;
+		playerSpeed = 50f;
 	
 	}
 	
@@ -31,8 +31,10 @@ public class playerController : MonoBehaviour
 		transform.Translate (Vector3.forward * xSpeed);
 		transform.Translate (Vector3.left * ySpeed);
 
-//		GetComponent<Rigidbody>().AddForce(transform.forward * xSpeed);
-//		GetComponent<Rigidbody>().AddForce(transform.right * -ySpeed);
+//		if (Input.GetAxis ("Vertical") == true) {
+//			GetComponent<Rigidbody> ().AddForce (transform.forward * xSpeed);
+//		}
+		//GetComponent<Rigidbody>().AddForce(transform.right * -ySpeed);
 
 
 		//jump limit
