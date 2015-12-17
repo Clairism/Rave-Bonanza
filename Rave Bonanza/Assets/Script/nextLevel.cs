@@ -30,10 +30,6 @@ public class nextLevel : MonoBehaviour
 		Min = timerCount.GetComponent<gameTimer> ().Min;
 		Sec = timerCount.GetComponent<gameTimer> ().Sec;
 		MilSec = timerCount.GetComponent<gameTimer> ().MilSec;
-
-		if (Input.GetKey (KeyCode.R)) {
-			Application.LoadLevel (currentLevel);
-		}
 	
 	}
 
@@ -63,6 +59,9 @@ public class nextLevel : MonoBehaviour
 		if(other.gameObject.tag == "Player"){
 		timerCount.GetComponent<gameTimer> ().stopTimer = true;
 		triggered = true;
+
+			//show credit scene
+			//Invoke("showCredit", 3f);
 		}
 	}
 
@@ -75,5 +74,9 @@ public class nextLevel : MonoBehaviour
 			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 20, 300, 30), "You used " + strMin + ":" + strSec + ":" + strMilSec + " to get out!!", scoreStyle);
 		
 		}
+	}
+
+	void showCredit(){
+			Application.LoadLevel("End scene");
 	}
 }
