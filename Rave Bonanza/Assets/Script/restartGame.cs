@@ -5,9 +5,9 @@ public class restartGame : MonoBehaviour {
 
 
 	void Update () {
-
-		if (Input.GetKey (KeyCode.S)) {
-			Application.LoadLevel(1);
-		}
+//
+//		if (Input.GetKey (KeyCode.S)) {
+//			Application.LoadLevel(1);
+//		}
 	}
 }
