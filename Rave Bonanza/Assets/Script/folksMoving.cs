@@ -22,7 +22,7 @@ public class folksMoving : MonoBehaviour
 		speed = 100f;
 		timeGap = 0.6f;
 
-		rotationRange = 300f;
+		rotationRange = 100f;
 
 	}
 	

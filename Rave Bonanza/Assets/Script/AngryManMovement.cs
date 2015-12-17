@@ -10,21 +10,21 @@ public class AngryManMovement : folksMoving
 	bool isHit;
 	bool isAngry;
 
+
 	public override void Start ()
 	{
 		
 		speed = 60f;
 		normalSpeed = 60f;
-		rotationRange = 400f;
+		rotationRange = 200f;
 		timeGap = 0.3f;
 
 
 		isHit = false;
 		isAngry = true;
-		chaseSpeed = 80f;
+		chaseSpeed = 30f;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
-
 	}
 	
 	public override void Update ()
@@ -36,9 +36,8 @@ public class AngryManMovement : folksMoving
 
 		if (isHit) {
 
-			transform.LookAt (player.transform);
-			transform.Translate (chaseSpeed * Vector3.forward * Time.deltaTime);
-
+			transform.LookAt (player.transform.position);
+			transform.position += transform.forward * chaseSpeed * Time.deltaTime;
 			isAngry = false;
 
 			Invoke ("StopChasing", 8f);
@@ -51,9 +50,6 @@ public class AngryManMovement : folksMoving
 		if (other.tag == "Player" && isAngry) {
 			isHit = true;
 
-			//player.GetComponent<Rigidbody>().AddForce(transform.forward * -8f);
-			transform.LookAt (player.transform);
-			player.transform.Translate (Vector3.forward * -30f);
 
 			Debug.Log ("Hit.");
 			
@@ -66,6 +62,7 @@ public class AngryManMovement : folksMoving
 
 		isHit = false;
 		speed = normalSpeed;
+
 
 		Invoke ("CanChaseAgain", 3f);
 
