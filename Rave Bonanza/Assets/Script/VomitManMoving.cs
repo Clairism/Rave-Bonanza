@@ -15,7 +15,7 @@ public class VomitManMoving : folksMoving
 	{
 
 		speed = 10f;
-		rotationRange = 100f;
+		rotationRange = 50f;
 		timeGap = 3f;
 
 		vomiting = false;
@@ -35,7 +35,7 @@ public class VomitManMoving : folksMoving
 		if (vomiting == true && currentPlayerSpeed >= 0) {
 
 			//slow down speed
-			player.GetComponent<playerController> ().playerSpeed = 5f;
+			player.GetComponent<playerController> ().playerSpeed =20f;
 			
 			Invoke ("SpeedBack", 3f);
 			
@@ -64,7 +64,7 @@ public class VomitManMoving : folksMoving
 	void SpeedBack ()
 	{
 
-		player.GetComponent<playerController> ().playerSpeed = 25f;
+		player.GetComponent<playerController> ().playerSpeed = 50f;
 
 	}
 }
