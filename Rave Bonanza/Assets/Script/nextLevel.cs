@@ -31,10 +31,10 @@ public class nextLevel : MonoBehaviour
 		Sec = timerCount.GetComponent<gameTimer> ().Sec;
 		MilSec = timerCount.GetComponent<gameTimer> ().MilSec;
 
-		if (Input.GetKey (KeyCode.R)) {
-			Application.LoadLevel (currentLevel);
+		if (triggered&&Input.GetKey (KeyCode.S)) {
+			Application.LoadLevel("End Scene");
 		}
-	
+
 	}
 
 	void FormatTimer ()
@@ -72,8 +72,12 @@ public class nextLevel : MonoBehaviour
 		if (triggered) {
 
 			FormatTimer ();
-			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 20, 300, 30), "You used " + strMin + ":" + strSec + ":" + strMilSec + " to get out!!", scoreStyle);
+			GUI.Label (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 20, 300, 30), "You used " + strMin + ":" + strSec + ":" + strMilSec + " to get out!!"+"\n" +"\n" +"Press 'S' ", scoreStyle);
 		
 		}
+	}
+
+	void showCredit(){
+			Application.LoadLevel("End Scene");
 	}
 }
