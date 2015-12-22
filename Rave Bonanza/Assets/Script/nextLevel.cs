@@ -5,39 +5,34 @@ public class nextLevel : MonoBehaviour
 {
 
 	public GUIStyle scoreStyle;
-	int currentLevel;
-	GameObject timerCount;
+	 GameObject timerCount;
 	private float Min;
 	private float Sec;
 	private float MilSec;
 	private string strMin = "00";
 	private string strSec = "00";
 	private string strMilSec = "00";
-	bool triggered = false;
+	public bool triggered;
 
-	void Start ()
+
+	 void Start ()
 	{
 
-		currentLevel = Application.loadedLevel;
 		timerCount = GameObject.Find ("timer");
+		triggered = false;
 	
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 
-		Min = timerCount.GetComponent<gameTimer> ().Min;
+	Min = timerCount.GetComponent<gameTimer> ().Min;
 		Sec = timerCount.GetComponent<gameTimer> ().Sec;
 		MilSec = timerCount.GetComponent<gameTimer> ().MilSec;
 
-		if (triggered&&Input.GetKey (KeyCode.S)) {
-			Application.LoadLevel("End Scene");
-		}
-
 	}
 
-	void FormatTimer ()
+	 void FormatTimer ()
 	{
 		if (MilSec < 10) {
 			strMilSec = "0" + MilSec.ToString ();
@@ -58,15 +53,18 @@ public class nextLevel : MonoBehaviour
 
 	}
 
-	void OnTriggerEnter (Collider other)
+
+	 void OnTriggerEnter (Collider other)
 	{
+
 		if(other.gameObject.tag == "Player"){
-		timerCount.GetComponent<gameTimer> ().stopTimer = true;
-		triggered = true;
+			triggered = true;
+			timerCount.GetComponent<gameTimer> ().stopTimer = true;
 		}
 	}
 
-	void OnGUI ()
+
+	 void OnGUI ()
 	{
 
 		if (triggered) {
@@ -77,7 +75,5 @@ public class nextLevel : MonoBehaviour
 		}
 	}
 
-	void showCredit(){
-			Application.LoadLevel("End Scene");
-	}
+	
 }
