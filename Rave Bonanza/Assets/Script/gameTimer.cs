@@ -46,9 +46,11 @@ public class gameTimer : MonoBehaviour {
 
 		CountUp();
 
-		if(stopTimer) {
+		if (stopTimer) {
 			Time.timeScale = 0;
-		} 
+		} else {
+			Time.timeScale = 1;
+		}
 
 	}
 	
